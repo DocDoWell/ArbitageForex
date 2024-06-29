@@ -1,5 +1,6 @@
 package main;
 
+import algorithm.BellmanFord;
 import graph.Edge;
 import graph.Graph;
 import graph.Vertex;
@@ -18,10 +19,10 @@ public class App {
         Graph graph = new Graph(vertices,edges);
 
         System.out.println(graph);
-        graph.toString();
-
+       // graph.toString();
 
         //implement alg
+        BellmanFord bellmanFord = new BellmanFord(graph);
 
 
     }
