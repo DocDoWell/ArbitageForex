@@ -13,6 +13,14 @@ public class Graph {
         this.edges = edges;
     }
 
+    public List<Vertex> getVertexList() {
+        return vertexList;
+    }
+
+    public List<Edge> getEdges() {
+        return edges;
+    }
+
     @Override
     public String toString() {
         String output = "";

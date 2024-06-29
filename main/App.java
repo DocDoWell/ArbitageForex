@@ -24,6 +24,12 @@ public class App {
         //implement alg
         BellmanFord bellmanFord = new BellmanFord(graph);
 
+        long startBell = System.currentTimeMillis();
+        bellmanFord.run(bellmanFord.getGraph().getVertexList().get(0));
+        System.out.println("BellmanFord shortest path: "+bellmanFord.getShortestPathTo(bellmanFord.getGraph().getVertexList().get(3)));
+        long finishBell = System.currentTimeMillis();
+        long elapsedBell= finishBell-startBell;
+
 
     }
 
