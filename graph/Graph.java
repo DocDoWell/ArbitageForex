@@ -5,15 +5,15 @@ import java.util.List;
 import java.util.Map;
 
 public class Graph {
-    List<Vertex> vertexList;
+    Map<String,Vertex>  vertexList;
     List<Edge> edges;
 
     public Graph(Map<String,Vertex> vertices, List<Edge> edges) {
-        this.vertexList = convertMapToList(vertices);
+        this.vertexList = vertices;
         this.edges = edges;
     }
 
-    public List<Vertex> getVertexList() {
+    public Map<String,Vertex> getVertexList() {
         return vertexList;
     }
 
