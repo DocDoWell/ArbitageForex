@@ -2,21 +2,13 @@ package graph;
 
 
 public class Vertex implements Comparable<Vertex> {
-    private String name;
+    private final String name;
     private double distance;
     private Vertex previousVertexOnShortestPath;
 
     public Vertex(String name) {
         this.name = name;
-        this.distance = Double.MAX_VALUE;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        this.distance = 0;
     }
 
     public double getDistance() {
