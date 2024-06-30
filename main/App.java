@@ -16,14 +16,13 @@ public class App {
     public static void main(String[] args) {
         Graph graph = createGraph();
         BellmanFord bellmanFord = new BellmanFord(graph);
-        bellmanFord.run(bellmanFord.getGraph().getVertexList().get("GBP"));
+        bellmanFord.run(bellmanFord.getGraph().getVertexList().get("USD"));
     }
 
     static Graph createGraph(){
         try{
             BufferedReader br = new BufferedReader(new FileReader("docs/test.csv"));
             String header = br.readLine();
-            System.out.println(header);
             String[] columns;
             if (header != null) {
                 columns = header.split(",");

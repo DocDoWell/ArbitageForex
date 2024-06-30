@@ -21,10 +21,6 @@ public class BellmanFord {
         return graph;
     }
 
-    public List<Vertex> getCycleList() {
-        return cycleList;
-    }
-
     public void run(Vertex source){
         source.setDistance(0);
         for(int i=0;i<graph.getVertexList().size()-1;i++){
@@ -40,19 +36,22 @@ public class BellmanFord {
         }
         //one more relaxation for negative cycles
         for(Edge edge: graph.getEdges()){
-            if(edge.getStart().getDistance() != Double.MAX_VALUE){
+            if(edge.getStart().getDistance() != 0){
                 if(hasCycle(edge)){
-                    System.out.println("There is an Arbitage Opportunity");
                     Vertex start = edge.getStart();
                     while(!cycleList.contains(start)){
                         this.cycleList.add(start);
                         start = start.getPreviousVertexOnShortestPath();
                     }
                     this.cycleList.add(start);
+                    System.out.println("There is an Arbitage Opportunity: ");
                     getArbitageOpportunity();
                     return;
                 }
             }
+        }
+        if(cycleList.isEmpty()){
+            System.out.println("There is no Arbitage Opportunity.");
         }
     }
 
