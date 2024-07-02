@@ -60,24 +60,28 @@ public class BellmanFord {
     }
 
     public void getArbitageOpportunity(){
-        List<Vertex> checker = new ArrayList<>();
-        for(Vertex v: cycleList){
-            if(!checker.contains(v)){
-                System.out.print(v +"----->");
-                checker.add(v);
+        for(int i= cycleList.size()-1; i >=0; i--){
+            if(i > 0){
+                System.out.print(cycleList.get(i) + " ---> ");
             }else{
-                checker.add(v);
-                System.out.print(v);
-                break;
+                System.out.print(cycleList.get(i));
             }
-        }
 
-        computeProfit();
+        }
+        double profit = computeProfit();
+        double gain = profit-1000;
+        System.out.println(" ");
+        System.out.println("Starting with 1000 units, you could make "+profit+ " which is a gain of "+ gain);
     }
 
     private double computeProfit(){
-        //implement me
-        return 0.0;
+        double output = 1000;
+
+        for(int i= cycleList.size()-1; i >0; i--) {
+            output = output * cycleList.get(i).getOriginalRate().get(cycleList.get(i-1));
+        }
+
+        return output;
     }
 
 }

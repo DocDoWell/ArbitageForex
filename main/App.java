@@ -21,7 +21,7 @@ public class App {
 
     static Graph createGraph(){
         try{
-            BufferedReader br = new BufferedReader(new FileReader("docs/test.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("docs/arbitage.csv"));
             String header = br.readLine();
             String[] columns;
             if (header != null) {
@@ -36,9 +36,12 @@ public class App {
                 String[] info = next.split(",");
                 Vertex start = vertices.get(info[0]);
                 for(int i=1; i<info.length;i++){
-                    double rate = (-1)*Math.log(Double.parseDouble(info[i]));
                     Vertex target = vertices.get(columns[i]);
+                    double originalRate = Double.parseDouble(info[i]);
+                    double rate = (-1)*Math.log(originalRate);
+
                     if(start != target){
+                        start.getOriginalRate().put(target, originalRate);
                         edgeList.add(new Edge(rate, start, target));
                     }
                 }

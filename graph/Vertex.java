@@ -1,14 +1,23 @@
 package graph;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Vertex implements Comparable<Vertex> {
     private final String name;
     private double distance;
     private Vertex previousVertexOnShortestPath;
+    private Map<Vertex, Double> originalRate;
 
     public Vertex(String name) {
         this.name = name;
         this.distance = 0;
+        this.originalRate = new HashMap<>();
+    }
+
+    public Map<Vertex, Double> getOriginalRate() {
+        return originalRate;
     }
 
     public double getDistance() {
